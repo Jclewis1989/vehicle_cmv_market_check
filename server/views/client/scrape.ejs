@@ -1,0 +1,112 @@
+<%- include ('../partials/header') %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 offset-1">
+                <br>
+                <hr>
+                <br>
+                <button type="button" class="btn btn-md btn-success foat-right"><a href="/home" class="text-white">Upload Another CSV</a></button>
+                <br>
+                <br>
+                <hr>
+                <form id="main_form" action="/save" method="POST">
+            <table class="table select"> <!-- class="table select" -->
+                <thead>
+                  <tr>
+
+                    <th>Save Data</th>
+                    <!-- <th><input name="select_all" value="1" id="select_all" type="checkbox" /></th> -->
+                    <th scope="col">Year</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Average Miles</th>
+                    <th scope="col">Average Price</th>
+                    <th scope="col">Variance (%)</th>
+                    <th scope="col">Craigslist Price</th>
+                    <th scope="col">Craiglist Post</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                    
+                <% new_data.map(function(u) { %>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="checked" value="false">
+                      <input type="hidden" name="id" value="<%= u.id %>">
+                    </td>
+                    <!-- ONE -->
+                    <td>
+                      <% vYear = parseInt(u.year) %>
+                      <input type="hidden" name="year" value="<%= u.year %>">
+                      <% if(isNaN(vYear)) { %>
+                          <%=  %>
+                      <% } else { %>
+                        <%= vYear %>
+                      <% } %>
+                    </td>
+                    <!-- TWO -->
+                    <td>
+                      <input type="hidden" name="make" value="<%= u.make %>">
+                      <%= u.make %>
+                    </td>
+                    <!-- THREE -->
+                    <td>
+                        <input type="hidden" name="model" value="<%= u.model %>">
+                      <%= u.model %>
+                    </td>
+                    <!-- FOUR -->
+                    <td>
+                      <%= parseInt(u.miles_stats_mean) %>
+                      <input type="hidden" name="mean" value="<%= parseInt(u.miles_stats_mean) %>">
+                    </td>
+                    <!-- FIVE -->
+                    <td>
+                      <%= parseInt(u.price_stats_mean) %>
+                      <input type="hidden" name="price_mean" value="<%= parseInt(u.price_stats_mean) %>">
+                    </td>
+                    <!-- SIX -->
+                    <td>
+                      <% let mean = u.price_stats_mean %>
+                      <% let price = u.price %>
+                      <% price = price.replace(/\D/g,''); %>
+                      <% let variance = mean - price %>
+                      <% let total = Math.sqrt(variance) %>
+                      <% total = parseFloat(total.toFixed(2)) %> 
+                      <% if(isNaN(total)) { %>
+                          <%= 0 %>
+                      <% } else { %>
+                        <%= total %>
+                      <% } %>
+                      <input type="hidden" name="percentage_variance" value="<%= total %>">
+                    </td>
+                    <!-- SEVEN -->
+                    <td>
+                      <% let cPrice = u.price.replace(/\D/g,'') %>
+                      <%= parseInt(cPrice) %>
+                      <input type="hidden" name="cl_price" value="<%= parseInt(cPrice) %>">
+                    </td>
+                    <!-- EIGHT -->
+                    <td>
+                      <a class="btn btn-block btn-success text-white" href="<%= u.cl_url%>" target="_blank">Original Post</a>
+                    </td>         
+                  </tr>
+                <% }) %>
+                
+              
+                </tbody>
+            
+              </table>
+              <button type="submit" class="btn btn-md btn-primary float-right">Save Records</button>
+              </form>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<%- include ('../partials/footer') %>

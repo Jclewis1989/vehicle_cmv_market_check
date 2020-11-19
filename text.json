@@ -1,0 +1,39 @@
+{
+    "price_stats": {
+      "geometric_mean": 28839,
+      "min": 17981,
+      "median": 29787,
+      "population_standard_deviation": 7366,
+      "variance": 54244750,
+      "max": 44844,
+      "mean": 29723,
+      "trimmed_mean": 29397,
+      "standard_deviation": 7366,
+      "iqr": 9127
+    },
+    "miles_stats": {
+      "geometric_mean": 73520,
+      "min": 26729,
+      "median": 77519,
+      "population_standard_deviation": 32305,
+      "variance": 1043561948,
+      "max": 142771,
+      "mean": 80538,
+      "trimmed_mean": 80257,
+      "standard_deviation": 32305,
+      "iqr": 41841
+    },
+    "dom_stats": {
+      "geometric_mean": 73,
+      "min": 2,
+      "median": 71,
+      "population_standard_deviation": 214,
+      "variance": 45469,
+      "max": 648,
+      "mean": 186,
+      "trimmed_mean": 163,
+      "standard_deviation": 214,
+      "iqr": 243
+    },
+    "count": 27
+  }

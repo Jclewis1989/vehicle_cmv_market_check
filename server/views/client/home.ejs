@@ -1,0 +1,29 @@
+<%- include ('../partials/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            <br>
+     
+            <br>
+     
+            <br>
+            <br>
+            <hr>
+                <form class="form-signin" action="/scrape" method="POST" enctype="multipart/form-data">
+                    <h1 class="display-4 text-center">Upload CSV File</h1>
+                    <label for="inputEmail" class="sr-only">CSV</label>
+                    <input type="file" class="form-control shadow-none select" name="file">
+                    <button class="btn btn-md btn-success btn-md btn-block" type="submit">Upload CSV</button>
+                  </form>
+
+            <hr>
+      </div>
+
+    
+            </div>
+    </div>
+</div>
+
+
+<%- include ('../partials/footer') %>
